@@ -32,13 +32,12 @@ def match(pattern: List[str], source: List[str]) -> List[str]:
         elif pattern[pind]=="%":
             st:str=""
             pind+=1
-            if pind==len(pattern)-1:
-                result.append(source[range(sind,len(source)-1)])
-            else:
-                while pattern[pind]!=source[sind]:
-                    st+=source[sind]+" "
-                    sind+=1
-                result.append(st[:-1])
+            while pattern[pind]!=source[sind]:
+                st+=source[sind]+" "
+                if sind==len(source)-1:
+                    break
+                sind+=1
+            result.append(st[:-1])
         # WARNING: this condition contains the bulk of the code for the assignment
         # If you get stuck on this one, we encourage you to attempt the other conditions
         #   and come back to this one afterwards
@@ -73,6 +72,7 @@ if __name__ == "__main__":
     assert match(["x", "y", "z", "z"], ["x", "y", "z"]) == None, "test 4 failed"
     assert match(["x", "_", "z"], ["x", "y", "z"]) == ["y"], "test 5 failed"
     assert match(["x", "_", "_"], ["x", "y", "z"]) == ["y", "z"], "test 6 failed"
+    print(match(["%"], ["x", "y", "z"]))
     assert match(["%"], ["x", "y", "z"]) == ["x y z"], "test 7 failed"
     assert match(["x", "%", "z"], ["x", "y", "z"]) == ["y"], "test 8 failed"
     assert match(["%", "z"], ["x", "y", "z"]) == ["x y"], "test 9 failed"

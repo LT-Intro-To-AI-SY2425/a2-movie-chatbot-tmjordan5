@@ -13,8 +13,8 @@ This assignment is about learning and applying the while loop and iterating thro
 ## Reflection Questions
 1. What was difficult for you while completing the match function?
 
-
+Figuring out where I was off by 1
 
 2. Explain how you could use the match function for extracting information from a movie database.
 
-
+It can filter out the important information from a user-submitted string which can be used to search through a database
